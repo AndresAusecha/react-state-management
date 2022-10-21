@@ -8,6 +8,7 @@ export const CardsList = ({ allCards, setCards, setAllCards }) => {
   return (
     <div style={{ width: "fit-content", minWidth: "250px", marginRight: "2rem" }}>
       <h3>All cards to select</h3>
+      <p>Double click to select</p>
       {allCards.map((card) => (
         <Card
           handleDoubleClick={handleDoubleClick}

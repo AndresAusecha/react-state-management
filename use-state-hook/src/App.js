@@ -12,6 +12,11 @@ const initialCardsInfo = [{
   id: "second-card",
   title: "Second",
   description: "This is a card description"
+},
+{
+  id: "thid-card",
+  title: "Third",
+  description: "This is a card description"
 }
 ];
 
@@ -32,11 +37,20 @@ function App() {
       <p>
         Selected cards  counter: {cards.length}
       </p>
-      <button onClick={() => {
+      <button 
+      style={{
+        backgroundColor: "#4db6ac",
+        border: "1px solid #4db6ac",
+        padding: "0.5rem",
+        color: "white",
+        borderRadius: "0.25rem",
+        fontSize: "medium"
+      }}
+      onClick={() => {
         setAllCards(initialCardsInfo);
         setCards([]);
       }}>
-        restart
+        Restart
       </button>
     </div>
   );

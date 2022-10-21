@@ -4,6 +4,18 @@
   min-height: 100vh;
 }
 
+.App p {
+  color: white;
+}
+
+.App h2 {
+  color: white;
+}
+
+.App h3 {
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
