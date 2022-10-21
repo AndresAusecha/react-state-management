@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import { CardsList } from './CardsList';
+import { SelectedCardsList } from './SelectedCardsList';
+
+const initialCardsInfo = [{
+  id: "first-card",
+  title: "First",
+  description: "This is a card description"
+},
+{
+  id: "second-card",
+  title: "Second",
+  description: "This is a card description"
+}
+];
 
 function App() {
+  const [cards, setCards] = useState([]);
+  const [allCards, setAllCards] = useState(initialCardsInfo);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Use state hook
+        </h1>
       </header>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CardsList allCards={allCards} setCards={setCards} setAllCards={setAllCards} />
+        <SelectedCardsList cards={cards}  setCards={setCards} setAllCards={setAllCards}  />
+      </div>
+      <p>
+        Selected cards  counter: {cards.length}
+      </p>
+      <button onClick={() => {
+        setAllCards(initialCardsInfo);
+        setCards([]);
+      }}>
+        restart
+      </button>
     </div>
   );
 }
