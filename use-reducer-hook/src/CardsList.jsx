@@ -1,9 +1,9 @@
 import { Card } from "./Card";
 
-export const CardsList = ({ allCards, setCards, setAllCards }) => {
+export const CardsList = ({ allCards, dispatch }) => {
   const handleDoubleClick = (card) => {
-    setCards((oldCards) => [...oldCards, card]);
-    setAllCards((oldCards) => oldCards.filter((c) => c.id !== card.id));
+    dispatch({ type: "ADD_CARD", card });
+    dispatch({ type: "REMOVE_CARD", cardId: card.id });
   }
   return (
     <div style={{ width: "fit-content", minWidth: "250px", marginRight: "2rem" }}>
@@ -11,6 +11,7 @@ export const CardsList = ({ allCards, setCards, setAllCards }) => {
       <p>Double click to select</p>
       {allCards.map((card) => (
         <Card
+          key={card.id}
           handleDoubleClick={handleDoubleClick}
           card={card}
         />

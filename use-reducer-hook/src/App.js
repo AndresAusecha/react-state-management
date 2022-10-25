@@ -1,28 +1,11 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import './App.css';
 import { CardsList } from './CardsList';
+import { initialState, reducer } from './functions';
 import { SelectedCardsList } from './SelectedCardsList';
 
-const initialCardsInfo = [{
-  id: "first-card",
-  title: "First",
-  description: "This is a card description"
-},
-{
-  id: "second-card",
-  title: "Second",
-  description: "This is a card description"
-},
-{
-  id: "thid-card",
-  title: "Third",
-  description: "This is a card description"
-}
-];
-
 function App() {
-  const [cards, setCards] = useState([]);
-  const [allCards, setAllCards] = useState(initialCardsInfo);
+  const [{ cards, allCards }, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
       <header className="App-header">
@@ -31,8 +14,8 @@ function App() {
         </h1>
       </header>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <CardsList allCards={allCards} setCards={setCards} setAllCards={setAllCards} />
-        <SelectedCardsList cards={cards}  setCards={setCards} setAllCards={setAllCards}  />
+        <CardsList allCards={allCards} dispatch={dispatch} />
+        <SelectedCardsList cards={cards} dispatch={dispatch} />
       </div>
       <p>
         Selected cards  counter: {cards.length}
@@ -47,8 +30,8 @@ function App() {
         fontSize: "medium"
       }}
       onClick={() => {
-        setAllCards(initialCardsInfo);
-        setCards([]);
+        dispatch({ type: "SET_ALL_CARDS", allCards: [] });
+        dispatch({ type: "SET_CARDS", cards: [] });
       }}>
         Restart
       </button>

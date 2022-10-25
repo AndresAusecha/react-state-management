@@ -1,9 +1,9 @@
 import { Card } from "./Card";
 
-export const SelectedCardsList = ({ cards, setCards, setAllCards }) => {
+export const SelectedCardsList = ({ cards, dispatch }) => {
 	const handleDoubleClick = (card) => {
-    setCards((oldCards) => oldCards.filter((c) => c.id !== card.id));
-    setAllCards((oldCards) => [...oldCards, card]);
+    dispatch({ type: "ADD_CARD", card });
+    dispatch({ type: "REMOVE_CARD", cardId: card.id });
   }
 	return (
 		<div>
