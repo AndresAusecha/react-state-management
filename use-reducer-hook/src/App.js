@@ -30,8 +30,8 @@ function App() {
         fontSize: "medium"
       }}
       onClick={() => {
-        dispatch({ type: "SET_ALL_CARDS", allCards: [] });
         dispatch({ type: "SET_CARDS", cards: [] });
+        dispatch({ type: "RESET_CARDS_ALL" });
       }}>
         Restart
       </button>

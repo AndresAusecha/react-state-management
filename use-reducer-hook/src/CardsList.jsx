@@ -2,8 +2,9 @@ import { Card } from "./Card";
 
 export const CardsList = ({ allCards, dispatch }) => {
   const handleDoubleClick = (card) => {
+    console.log(card);
     dispatch({ type: "ADD_CARD", card });
-    dispatch({ type: "REMOVE_CARD", cardId: card.id });
+    dispatch({ type: "REMOVE_CARD_ALL", cardId: card.id });
   }
   return (
     <div style={{ width: "fit-content", minWidth: "250px", marginRight: "2rem" }}>
