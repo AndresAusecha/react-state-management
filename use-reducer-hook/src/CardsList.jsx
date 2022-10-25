@@ -2,7 +2,6 @@ import { Card } from "./Card";
 
 export const CardsList = ({ allCards, dispatch }) => {
   const handleDoubleClick = (card) => {
-    console.log(card);
     dispatch({ type: "ADD_CARD", card });
     dispatch({ type: "REMOVE_CARD_ALL", cardId: card.id });
   }
