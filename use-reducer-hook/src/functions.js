@@ -35,31 +35,18 @@ export const reducer = (state, action) => {
         ...state,
         cards: action.cards
       }
-    case "REMOVE_CARD": 
+    case "SWITCH_CARD":
       return {
         ...state,
-        cards: state.cards.filter(handleAction(action.cardId))
+        cards: [...state.cards, action.card],
+        allCards: state.allCards.filter(handleAction(action.card.id))
       }
-    case "ADD_CARD":
+    case "SWITCH_CARD_BACK":
       return {
         ...state,
-        cards: [...state.cards, action.card]
+        allCards: [...state.allCards, action.card],
+        cards: state.cards.filter(handleAction(action.card.id))
       }
-    case "REMOVE_CARD_ALL": 
-      return {
-        ...state,
-        allCards: state.allCards.filter(handleAction(action.cardId))
-      }
-    case "ADD_CARD_ALL":
-      return {
-        ...state,
-        allCards: [...state.allCards, action.card]
-      }
-    case "RESET_CARDS_ALL":
-        return {
-          ...state,
-          allCards: initialCardsInfo
-        }
     default:
       throw Error("Action not found");
   }
