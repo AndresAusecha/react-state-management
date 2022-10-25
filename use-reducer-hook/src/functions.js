@@ -20,6 +20,9 @@ export const initialState = {
   cards: []
 }
 
+const handleAction = (cardId) => (c) => c.id !== cardId
+
+
 export const reducer = (state, action) => {
   switch (action.type) {
     case "SET_ALL_CARDS":
@@ -35,7 +38,7 @@ export const reducer = (state, action) => {
     case "REMOVE_CARD": 
       return {
         ...state,
-        cards: state.cards.filter((c) => c.id !== action.cardId)
+        cards: state.cards.filter(handleAction(action.cardId))
       }
     case "ADD_CARD":
       return {
@@ -45,7 +48,7 @@ export const reducer = (state, action) => {
     case "REMOVE_CARD_ALL": 
       return {
         ...state,
-        allCards: state.allCards.filter((c) => c.id !== action.cardId)
+        allCards: state.allCards.filter(handleAction(action.cardId))
       }
     case "ADD_CARD_ALL":
       return {
