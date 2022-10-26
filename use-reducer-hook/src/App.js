@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>
-          Use state hook
+          Use reducer hook
         </h1>
       </header>
       <div style={{ display: "flex", justifyContent: "center" }}>
