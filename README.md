@@ -5,3 +5,7 @@ This repo contains two versions of the same application, the two projects were m
 ## use-state-hook
 
 In this folder you will find the the application developed with useState hook
+
+## use-reducer-hook
+
+Same application but making use of useReducer
